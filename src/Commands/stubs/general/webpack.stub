@@ -1,0 +1,52 @@
+const mix = require('laravel-mix');
+const tailwindcss = require('tailwindcss');
+const path = require('path');
+
+require('laravel-mix-polyfill');
+
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'resources/js/'),
+            "~": path.resolve(__dirname, 'node_modules')
+        }
+    },
+    stats: {
+        colors: true,
+        children: true,
+        depth: true
+    }
+});
+
+mix
+    .js('resources/js/app.js', 'public/js').vue({version: 2})
+    .polyfill({
+        enabled: mix.inProduction() ? true : false,
+        useBuiltIns: "usage",
+        targets: {"firefox": "50", "ie": 11}
+    })
+    .sass('resources/scss/app.scss', 'public/css')
+    .options({
+        processCssUrls: false,
+        postCss: [
+            require('autoprefixer')({
+                grid: mix.inProduction() ? true : false,
+                remove: false,
+                cascade: false
+            }),
+            tailwindcss('./tailwind.config.js')
+        ]
+    })
+    .webpackConfig({ output: { filename: '[name].js', chunkFilename: 'js/[name].app.js', publicPath: '/' } })
+    
+    // if you install different libraries/packages, make sure you add them to vendor
+    .extract([
+        'vue',
+        'axios',
+        'lodash'
+    ]);
+
+if (mix.inProduction()) {
+    mix.version();
+}

@@ -1,0 +1,57 @@
+{
+  "name": "akizor/scaffold",
+  "description": "Base project structure generator for Laravel 8+ empty projects. Uses TailwindCSS and VueJs",
+  "license": "MIT",
+  "keywords": [
+    "kubis",
+    "akizor",
+    "scaffold",
+    "laravel",
+    "generator"
+  ],
+  "type": "library",
+  "authors": [
+    {
+        "name": "Daniel Placinta",
+        "email": "daniel.placinta@yahoo.com",
+        "homepage": "https://kubisinteractive.com"
+    }
+  ],
+  "homepage": "https://github.com/akizor/laravel-scaffold-project",
+  "require": {
+    "php": ">=7.2",
+    "illuminate/support": "^6.0|^7.0|^8.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "^4.0|^5.0|^6.0",
+    "phpunit/phpunit": "^8.4|^9.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Akizor\\Scaffold\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Akizor\\Scaffold\\Tests\\": "tests"
+    }
+  },
+  "scripts": {
+    "phpunit": "phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Akizor\\Scaffold\\ServiceProvider"
+      ],
+      "aliases": {
+        "Scaffold": "Kubis\\Scaffold\\Facades\\Scaffold"
+      }
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}

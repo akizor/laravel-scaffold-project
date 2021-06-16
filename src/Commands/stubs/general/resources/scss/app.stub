@@ -1,0 +1,10 @@
+@tailwind base;
+@import "tailwind/base";
+
+@tailwind components;
+@import "tailwind/components";
+
+@tailwind utilities;
+@import "tailwind/utilities";
+
+@tailwind screens;

@@ -1,0 +1,115 @@
+const mix = require('laravel-mix');
+
+// function to convert color codes from HEX format to RGBA
+// with opacity (transparency)
+const hex2rgba = (hex, opacity) => {
+	var c;
+	if(/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)){
+		c= hex.substring(1).split('');
+		if(c.length === 3){
+			c= [c[0], c[0], c[1], c[1], c[2], c[2]];
+		}
+		c= '0x'+c.join('');
+		return 'rgba('+[(c>>16)&255, (c>>8)&255, c&255].join(',')+`,${opacity})`;
+	}
+	throw new Error('Bad Hex');
+}
+
+module.exports = {
+  mode: mix.inProduction() ? null : 'jit',
+  purge: {
+    enabled: mix.inProduction() ? true : false,
+    content: [
+      './resources/**/*.blade.php',
+      './resources/**/*.vue',
+      './resources/**/*.js'
+    ]
+  },
+  darkMode: false, // or 'media' or 'class'
+  theme: {
+    extend: {},
+    screens: {
+      // xxs: '360px',
+      // xs:  '480px',
+      // 'sm-max': {'max': '639px'},
+      // sm: '640px',
+      'sm-max': {'max': '767px'},
+      md: '768px',
+      lmd: '960px',
+      // 'lg-max': {'max': '1023px'},
+      lg: '1024px',
+      xl: '1280px',
+      // xxl: '1440px'
+    },
+    fontSize: {
+      xxs: '1.1rem',     //11px
+      xs: '12rem',       //12px
+      sm: '1.4rem',      //14px
+      base: '1.6rem',    //16px
+      lg: '1.8rem',      //18px
+      xl: '2rem',        //20px
+      '2xl': '2.4rem',   //24px
+      '2xxl': '2.6rem',  //26px
+      '3xl': '2.8rem',   //28px
+      '3xxl': '3.2rem',  //32px
+      '4xl': '3.6rem',   //36px
+      '4-5xl': '4rem',   //40px
+      '5xl': '4.8rem',   //48px
+      '6xl': '6.4rem',   //64px
+    },
+    spacing: {
+      px: '1px',          //.h-px, .w-px, etc
+      '0': '0',           //guess
+      '2': '0.2rem',      //2px
+      '3': '0.3rem',      //3px
+      '4': '0.4rem',      //4px
+      '5': '0.5rem',      //5px
+      '6': '0.6rem',      //6px
+      '7': '0.7rem',      //7px
+      '8': '0.8rem',      //8px
+      '9': '0.9rem',      //9px
+      '10': '1rem',       //10px
+      '12': '1.2rem',     //12px
+      '13': '1.3rem',     //13px
+      '14': '1.4rem',     //14px
+      '15': '1.5rem',     //15px
+      '16': '1.6rem',     //16px
+      '18': '1.8rem',     //18px
+      '20': '2rem',       //20px
+      '24': '2.4rem',     //24px
+      '25': '2.5rem',     //25px
+      '30': '3rem',       //30px
+      '32': '3.2rem',     //32px
+      '35': '3.5rem',     //35px
+      '40': '4rem',       //40px
+      '45': '4.5rem',     //45px
+      '50': '5rem',       //50px
+      '60': '6rem',       //60px
+      '70': '7rem',       //70px
+      '80': '8rem',       //80px
+      '100': '10rem',     //100px
+      '120': '12rem',     //120px
+      '140': '14rem',     //140px
+      '150': '15rem',     //150px
+      '170': '17rem',     //170px
+      '180': '18rem',     //180px
+      '200': '20rem',     //200px
+      '250': '25rem',     //250px
+      '300': '30rem',     //300px
+      '340': '34rem',     //340px
+      '380': '38rem',     //380px
+      '400': '40rem',     //400px
+      '430': '43rem',     //430px
+      '1000': '100rem',   //1000px
+      '16by9': '56.25%',  //16/9
+    }
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography')
+  ],
+}

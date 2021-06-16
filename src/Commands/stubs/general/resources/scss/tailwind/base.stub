@@ -1,0 +1,83 @@
+/**
+* Base Styles
+*
+* Add styles for base html tags like
+* h1, h4, input, label, etc
+*/
+
+/* apply a natural box layout model to all elements, but allowing components to change */
+html {
+	box-sizing: border-box;
+	font-size: 62.5%; // 1rem = 10px;
+	@apply font-normal;
+}
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+body {
+	@apply text-base leading-normal tracking-normal p-0 m-0 flex flex-col h-full;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	line-height: 1.2;
+	@apply mb-20 font-bold;
+}
+h1, .h1 {
+	@apply text-6xl; //36px
+}
+h2, .h2 {
+	@apply text-6xl; //28px
+}
+h3, .h3 {
+	@apply text-2xl; //24px
+}
+h4, .h4 {
+	@apply text-xl; //21px
+}
+h5, .h5 {
+	@apply text-lg leading-snug; //18px
+}
+
+a {
+	@apply underline;
+	&:hover {
+		// @apply text-gold no-underline;
+	}
+}
+
+small,
+.small {
+	@apply text-xxs;
+}
+p {
+	@apply text-base mb-12;
+}
+
+strong{
+	@apply font-bold;
+}
+
+hr{
+	@apply w-full h-px my-16 inline-block;
+	clear: both;
+}
+
+form {
+	@apply mb-0;
+}
+
+ul {
+	@apply m-0 p-0;
+}
+
+li {
+	@apply list-none;
+}
+
+button {
+	&:focus {
+		@apply outline-none;
+	}
+}

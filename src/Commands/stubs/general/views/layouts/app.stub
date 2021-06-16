@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="ltr" itemscope itemtype="https://schema.org/WebPage" prefix="og: http://ogp.me/ns#">
+<head>
+    @include('site.layouts.partials.favicon')
+    @include('site.layouts.partials.meta')
+
+    @yield('google_schema')
+
+    <link rel="stylesheet" type="text/css" href="{{ asset(mix('css/app.css')) }}" />
+    
+    @include('site.layouts.partials.analytics')
+
+    @stack('header_scripts')
+</head>
+<body class="{{ (Route::currentRouteName()) }} @hasSection('body_class') @yield('body_class') @endif">
+    <div id="app" class="site-content">
+        @include('site.layouts.partials.header')
+        <main class="">
+            @yield('content')
+        </main>
+        @include('site.layouts.partials.footer')
+        @include('site.layouts.partials.age-gate')
+    </div>
+    
+    <script src="{{ asset(mix('/js/manifest.js')) }}"></script>
+    <script src="{{ asset(mix('/js/vendor.js')) }}"></script>
+    <script src="{{ asset(mix('/js/app.js')) }}"></script>
+    
+    @stack('scripts')
+</body>
+</html>

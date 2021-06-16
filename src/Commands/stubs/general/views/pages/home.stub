@@ -1,0 +1,9 @@
+@extends("site.layouts.app")
+
+@section('title', 'Homepage')
+
+@section("content")
+    <section class="container mx-auto my-20">
+        HP Content goes here
+    </section>
+@endsection
