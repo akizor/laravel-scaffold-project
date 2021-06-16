@@ -12,7 +12,7 @@ composer require akizor/project-scaffold
 ### Usage
 
 ```bash
-php artisan scaffold:general"
+php artisan scaffold:general
 ```
 
 ## Security
