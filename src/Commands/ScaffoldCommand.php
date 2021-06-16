@@ -166,6 +166,8 @@ class ScaffoldCommand extends Command{
         ];
 
         $this->line(implode(" ", \array_merge($command, $this->config->get('scaffold.npm_packages'))));
+        $this->info("Sometimes, the install command doesn't update packages.json. Execute the above command yourself and should be fine.");
+        
         $process = new Process($command, base_path());
         $process->setTty(Process::isTtySupported());
         $process->setTimeout(300);
