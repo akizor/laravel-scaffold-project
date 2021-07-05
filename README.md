@@ -6,7 +6,7 @@ Base project structure generator for Laravel 8+ empty projects. Uses TailwindCSS
 
 Install via composer
 ```bash
-composer require akizor/project-scaffold
+composer require akizor/scaffold
 ```
 
 ### Usage
